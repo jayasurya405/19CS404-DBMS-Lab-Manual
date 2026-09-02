@@ -230,7 +230,7 @@ rate as INTEGER.
 icom_id as TEXT with a length of 4.
 icom_id is a foreign key referencing com_id in the company table.
 The foreign key should cascade updates and deletes.
-item_desc and rate should not accept NULL.
+item_desc and rate should not accept NULL..
 
 
 PROGRAN :
