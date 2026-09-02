@@ -9,7 +9,7 @@ To study and implement DDL commands and different types of constraints.
 Used to create a new relation (table).
 
 **Syntax:**
-```sql
+```sql  
 CREATE TABLE (
   field_1 data_type(size),
   field_2 data_type(size),
@@ -105,123 +105,215 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Insert all customers from Old_customers into Customers
 
+Table attributes are CustomerID, Name, Address, Email
+
+
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 1
+insert into Customers(CustomerID, Name, Address, Email)
+select * from Old_customers;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1281" height="366" alt="image" src="https://github.com/user-attachments/assets/11448a5a-e6ad-4381-ac5f-e74166f055c5" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Create a table named Members with the following columns:
 
+MemberID as INTEGER
+MemberName as TEXT
+JoinDate as DATE
+
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 2
+create table Members(
+MemberID INTEGER,
+MemberName TEXT,
+JoinDate DATE
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1255" height="433" alt="image" src="https://github.com/user-attachments/assets/be06e8da-5195-4158-8b6f-b655499fa605" />
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a table named Attendance with the following constraints:
+AttendanceID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+AttendanceDate as DATE.
+Status as TEXT should be one of 'Present', 'Absent', 'Leave'.
 
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 3
+create table Attendance(
+AttendanceID INTEGER primary key,
+EmployeeID INTEGER, 
+AttendanceDate DATE,
+Status TEXT check(status in ('Present','Absent','Leave')),
+foreign key (EmployeeID)references Employees(EmployeeID)
+);
+
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1325" height="380" alt="image" src="https://github.com/user-attachments/assets/ede8da68-7f2c-4e9c-9ab0-2ada280979c2" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write an SQL Query to add the attributes designation, net_salary, and dob to the Companies table with the following data types:
+designation as VARCHAR(50)
+net_salary as NUMBER
+dob as DATE
 
+
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 4
+alter table Companies add column designation varchar(50);
+alter table Companies add column net_salary number; 
+alter table Companies add column dob date;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1303" height="470" alt="image" src="https://github.com/user-attachments/assets/9409d501-cc24-4c98-99f0-4b86c0d18133" />
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL Query for inserting the below values in the table Customers
 
+ID               NAME             AGE  ADDRESS     SALARY      
+---------------  ---------------  ---  ----------  ----------  
+1                Ramesh           32   Ahmedabad   2000
+2                Khilan           25   Delhi       1500
+3                Kaushik          23   Kota        2000
+
+
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 5
+insert into Customers(ID,NAME,AGE ,ADDRESS,SALARY ) values('1','Ramesh','32','Ahmedabad','2000'),('2','Khilan','25','Delhi','1500'),('3','Kaushik','23','Kota','2000');
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1303" height="360" alt="image" src="https://github.com/user-attachments/assets/f2865fd7-95b5-4e9c-875c-314c93e81d49" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to add a new column MobileNumber of type NUMBER and a new column Address of type VARCHAR(100) to the Student_details table.
 
+
+
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 6
-```
+alter table Student_details add column MobileNumber NUMBER;
+alter table Student_details add column Address VARCHAR(100);
+ ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1292" height="439" alt="image" src="https://github.com/user-attachments/assets/212a393a-3a6c-4a6b-87e9-f9320db8ea4d" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
 
+
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 7
+create table item(
+item_id  TEXT primary key,
+item_desc TEXT not null,
+rate  INTEGER not null,
+icom_id  TEXT icom_id(4), 
+foreign key (icom_id)
+    references company(com_id)
+    on update cascade
+    on delete cascade
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1273" height="430" alt="image" src="https://github.com/user-attachments/assets/4d9bca8d-4bec-48cc-9c6b-39f07af5afad" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+Insert a book with ISBN 978-1234567890, Title Data Science Essentials, Author Jane Doe, Publisher TechBooks, and Year 2024 into the Books table.
 
+
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 8
+insert into Books(ISBN,Title,Author,Publisher,Year) values('978-1234567890','Data Science Essentials','Jane Doe','TechBooks','2024');
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1266" height="308" alt="image" src="https://github.com/user-attachments/assets/7caca4b1-a46d-4cf8-916e-df133dd488b9" />
 
 **Question 9**
 ---
--- Paste Question 9 here
+Create a table named Bonuses with the following constraints:
+BonusID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+BonusAmount as REAL should be greater than 0.
+BonusDate as DATE.
+Reason as TEXT should not be NULL.
 
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 9
+create table Bonuses(
+BonusID INTEGER primary key,
+EmployeeID INTEGER ,
+BonusAmount  REAL check(BonusAmount>0),
+BonusDate DATE,
+Reason TEXT  not NULL,
+foreign key (EmployeeID)references Employees(EmployeeID)
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1283" height="352" alt="image" src="https://github.com/user-attachments/assets/af306399-0153-438c-a767-bd03b42ef07d" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
 
+
+PROGRAN :
 ```sql
--- Paste your SQL code below for Question 10
+Create table ProjectAssignments(
+AssignmentID  INTEGER primary key,
+EmployeeID INTEGER ,
+ProjectID INTEGER ,
+AssignmentDate  DATE NOT NULL, 
+foreign key (EmployeeID)references Employees(EmployeeID),
+foreign key (ProjectID) references Projects(ProjectID)
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1279" height="370" alt="image" src="https://github.com/user-attachments/assets/0b2a1a5d-5c02-4781-b3c1-7b2730a4cdb8" />
 
 
 ## RESULT
